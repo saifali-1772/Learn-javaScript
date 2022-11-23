@@ -1,0 +1,95 @@
+// ------------ Notes ----------------
+
+`#` is convert propertis to private variable, propertis, methods
+private propertis is working in inside the class.
+
+// ----------------- Code ------------
+class BankAccount {
+  customerName;
+  accountNumber;
+  #balance;
+
+  constructor(customerName, balance = 0) {
+    this.customerName = customerName;
+    this.accountNumber = Date.now();
+    this.#balance = balance;
+  }
+
+  deposit(amount) {
+    this.#balance += amount;
+  }
+
+  withdrawal(amount) {
+    this.#balance -= amount;
+  }
+
+  set balance(amount) {
+    //setBalance
+    if (isNaN(amount)) {
+      throw new Error('amount type is invalid!');
+    }
+    this.#balance = amount;
+  }
+
+  get balance() {
+    //getBalance
+    return this.#balance;
+  }
+}
+
+class CurrentAccount extends BankAccount {
+  // transactionLimit;
+
+  constructor(customerName, balance = 0) {
+    super(customerName, balance);
+    this.transactionLimit = 50000;
+  }
+
+  takingCurrentLoan(amount) {
+    console.log('Taking Currrent Loan:', amount);
+  }
+}
+
+class SavingAccount extends BankAccount {
+  // transactionLimit;
+
+  constructor(customerName, balance = 0) {
+    super(customerName, balance);
+    this.transactionLimit = 10000;
+  }
+
+  #loadCalculater(amount) {
+    console.log('This is Loan calculatier');
+  }
+
+  takingPersonalLoan(amount) {
+    this.#loadCalculater(amount);
+    console.log('Taking personal Loan:', amount);
+  }
+}
+
+const rakeshAccount = new CurrentAccount('Rakesh', 2000);
+rakeshAccount.deposit(4000);
+rakeshAccount.withdrawal(1000);
+rakeshAccount.balance = 10000; // rakeshAccount.balance this is set method
+// rakeshAccount.takingCurrentLoan(40000);
+
+const johnAccount = new BankAccount('John Doe', 5000);
+johnAccount.deposit(1000);
+johnAccount.withdrawal(100);
+
+const rohanAccount = new SavingAccount('Rohan', 3500);
+// rohanAccount.loadCalculater(); Error
+rohanAccount.takingPersonalLoan(3000); 
+
+console.log(rakeshAccount, johnAccount.balance); // johnAccount.balance this is get method
+
+
+// ----------------- Output ---------------------------
+This is Loan calculatier
+index.js:48 Taking personal Loan: 3000
+
+accountNumber: 1669230033474
+customerName: "Rakesh"
+transactionLimit: 50000
+#balance: 2000
