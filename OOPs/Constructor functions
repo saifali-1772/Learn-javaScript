@@ -1,0 +1,39 @@
+// Online Javascript Editor for free
+// Write, Edit and Run your Javascript code using JS Online Compiler
+
+function BankAccount(customerName, balance = 0) {
+    this.customerName = customerName;
+    this.accountNumber = Date.now();
+    this.balance = balance;
+    
+    this.deposit = (amount) => {
+        this.balance += amount;
+    }
+    
+    this.withdrawal = (amount) => {
+        this.balance -= amount;
+    }
+    
+}
+
+const rakesh = new BankAccount('Rakesh', 1000);
+const john = new BankAccount('John Doe');
+rakesh.deposit(5000);
+rakesh.withdrawal(500);
+console.log(rakesh, john);
+
+//--------------------- Output -------------------------
+
+BankAccount {
+  customerName: 'Rakesh',
+  accountNumber: 1669215247927,
+  balance: 5500,
+  deposit: [Function],
+  withdrawal: [Function] }
+  
+BankAccount {
+  customerName: 'John Doe',
+  accountNumber: 1669215247927,
+  balance: 0,
+  deposit: [Function],
+  withdrawal: [Function] }
