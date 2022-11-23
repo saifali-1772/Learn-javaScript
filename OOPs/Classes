@@ -1,0 +1,45 @@
+
+class BankAccount {
+    // customerName;
+    // accountNumber;
+    // balance;
+    
+    constructor(customerName, balance = 0) {
+        this.customerName = customerName;
+        this.accountNumber = Date.now();
+        this.balance = balance;
+    }
+    
+    deposit(amount) {
+        this.balance += amount;
+    }
+    
+    withdrawal(amount) {
+        this.balance -= amount;
+    }
+}
+
+const rakeshAccount = new BankAccount('Rakesh', 2000);
+rakeshAccount.deposit(4000);
+rakeshAccount.withdrawal(1000);
+
+const johnAccount = new BankAccount('John Doe');
+johnAccount.deposit(1000);
+johnAccount.withdrawal(100);
+
+console.log(rakeshAccount, johnAccount);
+
+
+// ----------- Output ------------
+
+BankAccount {
+  customerName: 'Rakesh',
+  accountNumber: 1669218549660,
+  balance: 5000 } 
+
+BankAccount {
+  customerName: 'John Doe',
+  accountNumber: 1669218549660,
+  balance: 900 }
+  
+  
