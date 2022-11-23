@@ -1,0 +1,71 @@
+
+class BankAccount {
+    // customerName;
+    // accountNumber;
+    // balance;
+    
+    constructor(customerName, balance = 0) {
+        this.customerName = customerName;
+        this.accountNumber = Date.now();
+        this.balance = balance;
+    }
+    
+    deposit(amount) {
+        this.balance += amount;
+    }
+    
+    withdrawal(amount) {
+        this.balance -= amount;
+    }
+}
+
+class CurrentAccount extends BankAccount {
+    // transactionLimit;
+    
+    constructor(customerName, balance = 0) {
+        super(customerName, balance);
+        this.transactionLimit = 50000;
+    }
+    
+    takingCurrentLoan(amount) {
+        console.log('Taking Currrent Loan:', amount);
+    }
+}
+
+class SavingAccount extends BankAccount {
+    // transactionLimit;
+    
+    constructor(customerName, balance = 0) {
+        super(customerName, balance);
+        this.transactionLimit = 10000;
+    }
+    
+    takingPersonalLoan(amount) {
+        console.log('Taking personal Loan:', amount);
+    }
+}
+
+const rakeshAccount = new CurrentAccount('Rakesh', 2000);
+rakeshAccount.deposit(4000);
+rakeshAccount.withdrawal(1000);
+rakeshAccount.takingCurrentLoan(40000);
+
+const johnAccount = new BankAccount('John Doe');
+johnAccount.deposit(1000);
+johnAccount.withdrawal(100);
+
+console.log(rakeshAccount, johnAccount);
+
+// ------------ Output -----------------
+
+Taking Currrent Loan: 40000
+CurrentAccount {
+  customerName: 'Rakesh',
+  accountNumber: 1669226265041,
+  balance: 5000,
+  transactionLimit: 50000 }
+  
+BankAccount {
+  customerName: 'John Doe',
+  accountNumber: 1669226265044,
+  balance: 900 }
