@@ -32,6 +32,8 @@ console.log(rakeshAccount, johnAccount);
 
 // ----------- Output ------------
 
+**Note : Hosting not working in class
+
 BankAccount {
   customerName: 'Rakesh',
   accountNumber: 1669218549660,
