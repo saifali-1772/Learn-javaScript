@@ -1,0 +1,50 @@
+class User {
+  static id = 1;
+
+  static cache = {
+    1: 'cache is this'
+  }
+
+  constructor(userName, age, income) {
+    this.userName = userName;
+    this.age = age;
+    this.income = income;
+    this.id = User.id++; // value get by static id
+  }
+
+  static callInCache() {
+    console.log(this.cache);
+  }
+
+  static sortByAge(user1, user2) {
+    return user1.age - user2.age;
+  }
+
+  static sortByIncome(user1, user2) {
+    return user1.income - user2.income;
+  }
+}
+
+const user1 = new User('Rakesh', 20, 10000);
+const user2 = new User('John Doe', 60, 25000);
+const user3 = new User('Jane Doe', 30, 16000);
+
+// --- manually sort ----
+// const users = [user1, user2, user3];
+// users.sort((a, b) => a.age - b.age);
+
+// --- static sort by age ----
+// const users = [user1, user2, user3];
+// users.sort(User.sortByAge);
+
+// --- static sort by income ----
+// const users = [user1, user2, user3];
+// users.sort(User.sortByIncome);
+
+// console.log(user1, user2, user3);
+
+// **note : callInCache is static, so work on class other waise not work.
+// console.log(User.callInCache()); {1: "cache is this"}
+
+
+// ----------------- Output --------------------------
